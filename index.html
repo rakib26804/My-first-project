@@ -1,11 +1,55 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Rakib Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to My Website</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#080d24,#172b55,#43236b);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+.container {
+  max-width: 600px;
+  padding: 45px 25px;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 22px;
+  box-shadow: 0 15px 45px #0005;
+}
+h1 { font-size: 36px; }
+p { color: #d4d9ee; line-height: 1.8; }
+button {
+  padding: 14px 30px;
+  border: 0;
+  border-radius: 30px;
+  background: #4b8cff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+footer { margin-top: 35px; color: #aeb8d4; }
+</style>
 </head>
 <body>
-<h1>Hello Rakib!</h1>
-<p>Welcome to my website.</p>
+<div class="container">
+  <h1>👋 Welcome!</h1>
+  <h2>Welcome to My Website</h2>
+  <p>This is my personal website.</p>
+  <p>Thank you for visiting. Have a wonderful day!</p>
+  <button onclick="alert('Thank you for visiting!')">
+    Get Started
+  </button>
+  <footer>© 2026 My Website</footer>
+</div>
 </body>
 </html>

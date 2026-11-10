@@ -3,53 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to My Website</title>
+<title>RAKIB KHAN EMON</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#080d24,#172b55,#43236b);
   color: white;
-  min-height: 100vh;
+  text-align: center;
+  background: #071b2d;
+}
+header {
+  padding: 45px 15px 30px;
+  background: linear-gradient(135deg, #071b2d, #243b73);
+}
+.profile {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 0 20px #75d5ff;
+}
+h1 {
+  margin: 18px 0 8px;
+  letter-spacing: 2px;
+}
+p {
+  color: #dcecff;
+}
+.buttons {
+  margin: 25px 0;
+}
+.buttons a {
+  display: inline-block;
+  padding: 12px 22px;
+  margin: 7px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.facebook {
+  background: #1877f2;
+}
+.instagram {
+  background: #d62976;
+}
+.about {
+  padding: 25px 15px;
+}
+.nature {
+  min-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 20px;
+  padding: 25px;
+  background:
+    linear-gradient(#001a3380, #001a3380),
+    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1400")
+    center/cover no-repeat;
 }
-.container {
-  max-width: 600px;
-  padding: 45px 25px;
-  background: rgba(255,255,255,.09);
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: 22px;
-  box-shadow: 0 15px 45px #0005;
+.nature h2 {
+  font-size: 30px;
+  text-shadow: 2px 2px 5px black;
 }
-h1 { font-size: 36px; }
-p { color: #d4d9ee; line-height: 1.8; }
-button {
-  padding: 14px 30px;
-  border: 0;
-  border-radius: 30px;
-  background: #4b8cff;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
+footer {
+  padding: 18px;
+  background: #061321;
+  color: #b9cce0;
 }
-footer { margin-top: 35px; color: #aeb8d4; }
 </style>
 </head>
+
 <body>
-<div class="container">
-  <h1>👋 Welcome!</h1>
-  <h2>Welcome to My Website</h2>
-  <p>This is my personal website.</p>
-  <p>Thank you for visiting. Have a wonderful day!</p>
-  <button onclick="alert('Thank you for visiting!')">
-    Get Started
-  </button>
-  <footer>© 2026 My Website</footer>
-</div>
+
+<header>
+  <img class="profile" src="profile.jpg" alt="Rakib Khan Emon">
+  <h1>RAKIB KHAN EMON</h1>
+  <p>Welcome to my personal website</p>
+
+  <div class="buttons">
+    <a class="facebook"
+       href="https://www.facebook.com/share/19wNbXPKDX/"
+       target="_blank">Facebook</a>
+
+    <a class="instagram"
+       href="https://www.instagram.com/rakib60654?rpxt=MWppZWZpZjkwbHFyOA=="
+       target="_blank">Instagram</a>
+  </div>
+</header>
+
+<section class="about">
+  <h2>About Me</h2>
+  <p>Welcome to my personal website. Thank you for visiting!</p>
+</section>
+
+<section class="nature">
+  <h2>Explore the Beauty of Nature</h2>
+</section>
+
+<footer>
+  © 2026 RAKIB KHAN EMON
+</footer>
+
 </body>
 </html>

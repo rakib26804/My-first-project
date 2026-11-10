@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAKIB KHAN EMON - Verification</title>
+<title>RAKIB KHAN EMON - Social Media Growth</title>
+
+<!-- Google reCAPTCHA API -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
 * {
@@ -56,6 +59,7 @@ p {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .social-icon {
@@ -65,51 +69,92 @@ p {
 
 .facebook {
   background: #1877f2;
-  cursor: pointer;
 }
 
 .instagram {
   background: #d62976;
-  cursor: pointer;
 }
 
-/* Verification Section */
-.verify-section {
-  padding: 35px 15px;
+.about {
+  padding: 25px 15px;
+}
+
+/* Shop Section Design */
+.shop-section {
+  padding: 40px 15px;
   background: #0d2843;
   margin: 20px auto;
-  max-width: 450px;
-  border-radius: 12px;
+  max-width: 500px;
+  border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.verify-section input {
-  width: 80%;
+.shop-section h2 {
+  color: #75d5ff;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #dcecff;
+}
+
+.form-group select, .form-group input {
+  width: 100%;
   padding: 12px;
-  margin: 8px 0;
   border: 1px solid #75d5ff;
-  border-radius: 6px;
-  font-size: 15px;
+  border-radius: 8px;
+  background: #061321;
+  color: white;
+  font-size: 16px;
   outline: none;
 }
 
-.verify-button {
-  padding: 12px 25px;
-  margin-top: 10px;
+.price-box {
+  font-size: 20px;
+  font-weight: bold;
+  color: #28a745;
+  margin: 15px 0;
+}
+
+.captcha-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.buy-button {
+  display: inline-block;
+  width: 80%;
+  padding: 14px;
   border: none;
   border-radius: 25px;
   background: #28a745;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* bKash Design */
+.buy-button:hover {
+  background: #218838;
+}
+
+/* bKash Payment Modal/Section */
 .bkash {
   padding: 35px 15px;
   background: white;
   color: #333;
+  margin-top: 30px;
 }
 
 .bkash h2 {
@@ -143,98 +188,125 @@ footer {
   color: #b9cce0;
 }
 </style>
-
-<!-- Firebase SDK (v9 Modular) -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-  // আপনার Firebase Console থেকে পাওয়া Config তথ্যগুলো নিচে বসাবেন
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  window.registerAndVerify = function() {
-    playClickSound();
-    const email = document.getElementById("userEmail").value;
-    const password = document.getElementById("userPassword").value;
-    const statusMsg = document.getElementById("statusMessage");
-
-    if (!email || !password) {
-      statusMsg.style.color = "red";
-      statusMsg.innerText = "Please enter email and password!";
-      return;
-    }
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        sendEmailVerification(userCredential.user)
-          .then(() => {
-            statusMsg.style.color = "#75d5ff";
-            statusMsg.innerText = "Verification email sent to " + email + ". Check your inbox!";
-          });
-      })
-      .catch((error) => {
-        statusMsg.style.color = "red";
-        statusMsg.innerText = "Error: " + error.message;
-      });
-  };
-</script>
 </head>
 
 <body>
 
+<!-- Header -->
 <header>
-  <img class="profile" src="1000059646.webp" alt="Rakib Khan Emon">
+
+  <img class="profile"
+       src="1000059646.webp"
+       alt="Rakib Khan Emon">
+
   <h1>RAKIB KHAN EMON</h1>
+
   <p>Welcome to my personal website</p>
 
   <div class="buttons">
-    <a class="facebook" href="https://www.facebook.com/share/19wNbXPKDX/" target="_blank" rel="noopener" onclick="playClickSound()">
+    <a class="facebook"
+       href="https://www.facebook.com/share/19wNbXPKDX/"
+       target="_blank"
+       rel="noopener"
+       onclick="playClickSound()">
       Facebook
     </a>
-    <a class="instagram" href="https://www.instagram.com/rakib60654?rpxt=MWppZWZpZjkwbHFyOA==" target="_blank" rel="noopener" onclick="playClickSound()">
+
+    <a class="instagram"
+       href="https://www.instagram.com/rakib60654?rpxt=MWppZWZpZjkwbHFyOA=="
+       target="_blank"
+       rel="noopener"
+       onclick="playClickSound()">
       Instagram
     </a>
   </div>
+
 </header>
 
-<!-- User Email Verification Section -->
-<section class="verify-section">
-  <h2>User Email Verification</h2>
-  <p>Enter your email and set a password to receive a verification link.</p>
+<!-- Social Media Followers Shop Section -->
+<section class="shop-section">
+  <h2>Buy Followers</h2>
   
-  <input type="email" id="userEmail" placeholder="Enter Email Address" required><br>
-  <input type="password" id="userPassword" placeholder="Create Password" required><br>
-  
-  <button class="verify-button" onclick="registerAndVerify()">Verify Email</button>
-  
-  <p id="statusMessage" style="margin-top:15px; font-weight:bold;"></p>
+  <div class="form-group">
+    <label>প্লাটফর্ম সিলেক্ট করুন:</label>
+    <select id="platformSelect" onchange="playClickSound()">
+      <option value="facebook">Facebook Page/Profile Followers</option>
+      <option value="tiktok">TikTok Followers</option>
+      <option value="instagram">Instagram Followers</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>লিংক দিন (Profile/Page Link):</label>
+    <input type="text" id="socialLink" placeholder="আপনার প্রফাইল বা পেজের লিংক দিন">
+  </div>
+
+  <div class="form-group">
+    <label>ফলোয়ার সংখ্যা (পরিমাণ):</label>
+    <input type="number" id="followerCount" value="1000" min="100" step="100" oninput="calculatePrice()">
+  </div>
+
+  <div class="price-box" id="totalPriceDisplay">
+    মোট মূল্য: ৪১০ টাকা
+  </div>
+
+  <!-- I'm not a robot reCAPTCHA -->
+  <div class="captcha-container">
+    <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+  </div>
+
+  <button class="buy-button" onclick="handleBuyNow()">এখুনি কিনুন (Buy Now)</button>
 </section>
 
-<!-- bKash Payment -->
-<section class="bkash">
+<!-- bKash Payment Info -->
+<section class="bkash" id="bkashSection">
+
   <h2>bKash Payment</h2>
-  <p style="color:#555;">Send Money to my bKash Number</p>
-  <div class="bkash-number">01892882839</div>
-  <button class="bkash-button" onclick="copyBkash()">Copy Number</button>
-  <a class="bkash-button" href="https://www.bkash.com/" target="_blank" rel="noopener" onclick="playClickSound()">Pay with bKash</a>
-  <p id="copyMessage" style="color:green;font-size:14px;"></p>
+
+  <p style="color:#555;">
+    ফলোয়ার কিনতে নিচের bKash নম্বরে Send Money করুন
+  </p>
+
+  <div class="bkash-number">
+    01892882839
+  </div>
+
+  <button class="bkash-button"
+          onclick="copyBkash()">
+    Copy Number
+  </button>
+
+  <a class="bkash-button"
+     href="https://www.bkash.com/"
+     target="_blank"
+     rel="noopener"
+     onclick="playClickSound()">
+    Pay with bKash
+  </a>
+
+  <p id="copyMessage"
+     style="color:green;font-size:14px;"></p>
+
+  <p style="color:#777;font-size:13px;">
+    নম্বর কপি করে পেমেন্ট সম্পন্ন করার পর আপনার অর্ডারটি প্রসেস করা হবে।
+  </p>
+
 </section>
 
+<!-- Nature Section -->
+<section class="nature" style="min-height: 250px; display: flex; align-items: center; justify-content: center; padding: 25px; background: linear-gradient(#001a3380, #001a3380), url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1400') center/cover no-repeat;">
+  <h2 style="font-size: 25px; text-shadow: 2px 2px 5px black;">Explore the Beauty of Nature</h2>
+</section>
+
+<!-- Footer -->
 <footer>
   © 2026 RAKIB KHAN EMON
 </footer>
 
+<!-- JavaScript Code -->
 <script>
+
+// বাটন ক্লিকে সাউন্ড প্লে করার ফাংশন
 function playClickSound() {
   try {
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -253,16 +325,57 @@ function playClickSound() {
 
     osc.start();
     osc.stop(audioCtx.currentTime + 0.08);
-  } catch (e) {}
+  } catch (e) {
+    console.log("Audio not supported or blocked");
+  }
 }
 
+// ১০০০ ফলোয়ার = ৪০০ টাকা হিসেবে দাম ক্যালকুলেশন
+function calculatePrice() {
+  const count = document.getElementById("followerCount").value;
+  // ১০০০ ফলোয়ার ৪০০ টাকা হলে প্রতি ফলোয়ারের দাম ০.৪ টাকা
+  let price = (count / 1000) * 400;
+  if (price < 0) price = 0;
+  document.getElementById("totalPriceDisplay").innerText = "মোট মূল্য: " + price + " টাকা";
+}
+
+// Buy Now ক্লিক করার ফাংশন
+function handleBuyNow() {
+  playClickSound();
+  
+  const link = document.getElementById("socialLink").value;
+  const count = document.getElementById("followerCount").value;
+  
+  if(!link) {
+    alert("দয়া করে আপনার প্রফাইল বা পেজের লিংক দিন!");
+    return;
+  }
+
+  // reCAPTCHA ভেরিফিকেশন চেক
+  const recaptchaResponse = grecaptcha.getResponse();
+  if (!recaptchaResponse) {
+    alert("দয়া করে প্রমাণ করুন যে আপনি রোবট নন (I'm not a robot বক্সে টিক দিন)");
+    return;
+  }
+
+  // বিকাশ সেকশনে স্ক্রিন নিয়ে যাওয়া এবং পেমেন্ট চাইতে বলা
+  alert("সফলভাবে রোবট ভেরিফিকেশন সম্পন্ন হয়েছে! এখন পেমেন্ট সম্পন্ন করতে বিকাশ সেকশনে যান।");
+  document.getElementById("bkashSection").scrollIntoView({ behavior: 'smooth' });
+}
+
+// bKash নম্বর কপি করার ফাংশন
 function copyBkash() {
   playClickSound();
+
   navigator.clipboard.writeText("01892882839")
-    .then(() => {
+    .then(function() {
       document.getElementById("copyMessage").innerText = "Number Copied Successfully!";
+    })
+    .catch(function() {
+      document.getElementById("copyMessage").innerText = "Please copy: 01892882839";
     });
 }
+
 </script>
 
 </body>

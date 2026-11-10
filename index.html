@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAKIB KHAN EMON</title>
+<title>RAKIB KHAN EMON - Verification</title>
 
 <style>
 * {
@@ -66,18 +65,47 @@ p {
 
 .facebook {
   background: #1877f2;
+  cursor: pointer;
 }
 
 .instagram {
   background: #d62976;
+  cursor: pointer;
 }
 
-.about {
-  padding: 25px 15px;
+/* Verification Section */
+.verify-section {
+  padding: 35px 15px;
+  background: #0d2843;
+  margin: 20px auto;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.verify-section input {
+  width: 80%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #75d5ff;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+}
+
+.verify-button {
+  padding: 12px 25px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 25px;
+  background: #28a745;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* bKash Design */
-
 .bkash {
   padding: 35px 15px;
   background: white;
@@ -109,179 +137,132 @@ p {
   cursor: pointer;
 }
 
-/* Nature Background */
-
-.nature {
-  min-height: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
-  background:
-    linear-gradient(#001a3380, #001a3380),
-    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1400")
-    center/cover no-repeat;
-}
-
-.nature h2 {
-  font-size: 30px;
-  text-shadow: 2px 2px 5px black;
-}
-
 footer {
   padding: 18px;
   background: #061321;
   color: #b9cce0;
 }
 </style>
+
+<!-- Firebase SDK (v9 Modular) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+  // আপনার Firebase Console থেকে পাওয়া Config তথ্যগুলো নিচে বসাবেন
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.registerAndVerify = function() {
+    playClickSound();
+    const email = document.getElementById("userEmail").value;
+    const password = document.getElementById("userPassword").value;
+    const statusMsg = document.getElementById("statusMessage");
+
+    if (!email || !password) {
+      statusMsg.style.color = "red";
+      statusMsg.innerText = "Please enter email and password!";
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        sendEmailVerification(userCredential.user)
+          .then(() => {
+            statusMsg.style.color = "#75d5ff";
+            statusMsg.innerText = "Verification email sent to " + email + ". Check your inbox!";
+          });
+      })
+      .catch((error) => {
+        statusMsg.style.color = "red";
+        statusMsg.innerText = "Error: " + error.message;
+      });
+  };
+</script>
 </head>
 
 <body>
 
-<!-- Header -->
-
 <header>
-
-  <img class="profile"
-       src="profile.jpg"
-       alt="Rakib Khan Emon">
-
+  <img class="profile" src="1000059646.webp" alt="Rakib Khan Emon">
   <h1>RAKIB KHAN EMON</h1>
-
   <p>Welcome to my personal website</p>
 
-  <!-- Social Media Buttons -->
-
   <div class="buttons">
-
-    <a class="facebook"
-       href="https://www.facebook.com/share/19wNbXPKDX/"
-       target="_blank"
-       rel="noopener">
-
-      <svg class="social-icon"
-           viewBox="0 0 24 24"
-           fill="white"
-           aria-hidden="true">
-        <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V10H7.6v3h2.7v8z"/>
-      </svg>
-
+    <a class="facebook" href="https://www.facebook.com/share/19wNbXPKDX/" target="_blank" rel="noopener" onclick="playClickSound()">
       Facebook
-
     </a>
-
-    <a class="instagram"
-       href="https://www.instagram.com/rakib60654?rpxt=MWppZWZpZjkwbHFyOA=="
-       target="_blank"
-       rel="noopener">
-
-      <svg class="social-icon"
-           viewBox="0 0 24 24"
-           fill="none"
-           stroke="white"
-           stroke-width="2"
-           aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r="1"
-                fill="white" stroke="none"/>
-      </svg>
-
+    <a class="instagram" href="https://www.instagram.com/rakib60654?rpxt=MWppZWZpZjkwbHFyOA==" target="_blank" rel="noopener" onclick="playClickSound()">
       Instagram
-
     </a>
-
   </div>
-
 </header>
 
-<!-- About Me -->
-
-<section class="about">
-
-  <h2>About Me</h2>
-
-  <p>
-    Welcome to my personal website.
-    Thank you for visiting!
-  </p>
-
+<!-- User Email Verification Section -->
+<section class="verify-section">
+  <h2>User Email Verification</h2>
+  <p>Enter your email and set a password to receive a verification link.</p>
+  
+  <input type="email" id="userEmail" placeholder="Enter Email Address" required><br>
+  <input type="password" id="userPassword" placeholder="Create Password" required><br>
+  
+  <button class="verify-button" onclick="registerAndVerify()">Verify Email</button>
+  
+  <p id="statusMessage" style="margin-top:15px; font-weight:bold;"></p>
 </section>
 
 <!-- bKash Payment -->
-
 <section class="bkash">
-
   <h2>bKash Payment</h2>
-
-  <p style="color:#555;">
-    Send Money to my bKash Number
-  </p>
-
-  <div class="bkash-number">
-    01892882839
-  </div>
-
-  <button class="bkash-button"
-          onclick="copyBkash()">
-    Copy Number
-  </button>
-
-  <a class="bkash-button"
-     href="https://www.bkash.com/"
-     target="_blank"
-     rel="noopener">
-    Pay with bKash
-  </a>
-
-  <p id="copyMessage"
-     style="color:green;font-size:14px;">
-  </p>
-
-  <p style="color:#777;font-size:13px;">
-    Copy the number and Send Money using your bKash app.
-  </p>
-
+  <p style="color:#555;">Send Money to my bKash Number</p>
+  <div class="bkash-number">01892882839</div>
+  <button class="bkash-button" onclick="copyBkash()">Copy Number</button>
+  <a class="bkash-button" href="https://www.bkash.com/" target="_blank" rel="noopener" onclick="playClickSound()">Pay with bKash</a>
+  <p id="copyMessage" style="color:green;font-size:14px;"></p>
 </section>
-
-<!-- Nature Section -->
-
-<section class="nature">
-
-  <h2>Explore the Beauty of Nature</h2>
-
-</section>
-
-<!-- Footer -->
 
 <footer>
-
   © 2026 RAKIB KHAN EMON
-
 </footer>
 
-<!-- Copy Number JavaScript -->
-
 <script>
+function playClickSound() {
+  try {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
 
-function copyBkash() {
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.08);
 
-  navigator.clipboard.writeText("01892882839")
-    .then(function() {
+    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
 
-      document.getElementById("copyMessage").innerText =
-        "Number Copied Successfully!";
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
 
-    })
-    .catch(function() {
-
-      document.getElementById("copyMessage").innerText =
-        "Please copy: 01892882839";
-
-    });
-
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.08);
+  } catch (e) {}
 }
 
+function copyBkash() {
+  playClickSound();
+  navigator.clipboard.writeText("01892882839")
+    .then(() => {
+      document.getElementById("copyMessage").innerText = "Number Copied Successfully!";
+    });
+}
 </script>
 
 </body>
